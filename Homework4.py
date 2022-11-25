@@ -20,8 +20,7 @@ if (quarter.isdigit() == True):
         elif (quarter == 4):
             print(f'Диапазон возможных координат точки в 4-й четверти:\nx = {(0, x_pos_end)} и y = {(0, y_neg_end)}')
             break
-        else:
-            print(f'Четверти {quarter} не существует.')
-            break
+    else:
+        print(f'Четверти {quarter} не существует.')
 else:
     print('Необходимо ввести число вместо символа')
