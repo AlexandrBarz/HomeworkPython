@@ -1,25 +1,27 @@
 # Напишите программу, которая принимает на вход вещественное число и показывает сумму его цифр. Учтите, что числа могут быть отрицательными
 
-# Метод через строковую переменную
-num = input('Введите число: ')
-sum = 0
-for i in num:
-    if (i != '.') and (i !=','):
-        sum += int(i)
-print(f'Сумма цифр введенного числа {num} = {sum}')
+# # Метод через строковую переменную
+# num = input('Введите число: ')
+# sum = 0
+# for i in num:
+#     if (i != '.') and (i != ','):
+#         sum += int(i)
+# print(f'Сумма цифр введенного числа {num} = {sum}')
 
 
 # Метод через переменную float
 num = input('Введите число: ')
-num1 = abs(int(num))
-num2 = abs(num) - num1
-sum = 0
-while num1 != 0:
-    res = num1 % 10
-    sum += res
-    num1 //= 10
-while num2 != 0:
-    sum += int(num2*10)
-    num2 = num2*10 - int(num2*10)
-    num2 = round(num2, 10)  # для сокращения знаков после запятой. Без нее программа тоже работает
-print(f'Сумма цифр введенного числа {num} = {sum}')
+if (num.startswith('-')) == True:  # or ()
+    num1 = abs(int(num))
+    num2 = abs(num) - num1
+    sum = 0
+    while num1 != 0:
+        res = num1 % 10
+        sum += res
+        num1 //= 10
+    while num2 != 0:
+        sum += int(num2*10)
+        num2 = num2*10 - int(num2*10)
+    # для сокращения знаков после запятой. Без нее программа тоже работает
+        num2 = round(num2, 10)
+    print(f'Сумма цифр введенного числа {num} = {sum}')
