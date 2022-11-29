@@ -8,5 +8,4 @@ m = int(input('Кол-во человек, которое посчитал ве�
 last = 0
 for i in range(1, n + 1):
     last = (last + m) % i
-    print(last)
 print(last + 1)
