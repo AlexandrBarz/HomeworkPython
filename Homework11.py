@@ -4,23 +4,23 @@ import math
 
 def input_list_random(n, lowlimit, highlimit):
     list = []
-    for i in range(n):
+    for _ in range(n):
         list.append(randint(lowlimit, highlimit))
     print(f'Сформированный список:\n{list}')
     return list
 
-def mult(list_number):
+def mult_number(list_number):
     mult =[]
     while len(list_number) > 1:
         mult.append(list_number[0] * list_number[-1])
         del list_number[0]
         del list_number[-1]
-    else:
+    if len(list_number) == 1:
         mult.append(list_number[0]**2)
-    return print(mult)
+    return print(f'Произведение пар чисел списка:\n{mult}')
 
 len_list = int(input('Введите кол-во элементов в списке: '))
 lowlimit = int(input('Введите нижнюю границу диапазона списка: '))
 highlimit = int(input('Введите верхнюю границу диапазона списка: '))
-input_list = (input_list_random(len_list, lowlimit, highlimit))
-mult(input_list)
+input_list = input_list_random(len_list, lowlimit, highlimit)
+mult_number(input_list)
