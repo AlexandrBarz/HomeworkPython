@@ -3,6 +3,11 @@
 from random import randint
 
 def input_list_random(n, lowlimit, highlimit):
+    """
+    Запрашивает кол-во элементов в списке и границы диапазона чисел, размещаемых в списке.
+    Заполняет список случайными числами.
+    Возвращает сформированный список.
+    """
     list = []
     for _ in range(n):
         list.append(randint(lowlimit, highlimit))
@@ -11,6 +16,10 @@ def input_list_random(n, lowlimit, highlimit):
 
 # 1-й способ решения:
 def summa_number(len_list, list_number):
+    """
+    На вход принимает список.
+    На выходе выдает сумму элементов, расположенных на нечетных позициях
+    """
     summa = 0
     for i in range(len_list):
         if (i % 2) == 1:
