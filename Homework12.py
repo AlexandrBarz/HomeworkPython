@@ -21,7 +21,7 @@ def difference_max_min(input_list, number_sings):
             max = float_list[i]
         if float_list[i] < min:
             min = float_list[i]
-    difference = max - min
+    difference = round((max - min), number_sings)
     return difference
 
 len_list = int(input('Введите кол-во элементов в списке: '))
