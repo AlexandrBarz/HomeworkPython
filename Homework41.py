@@ -2,8 +2,10 @@
 def number_check(input_string: str) -> int:
     """
     Функция проверяет корректность ввода
+
     Agrs:
     Intput_string  - ввод данных пользователя
+    
     Return:
     int - натуральное число
     """
@@ -17,8 +19,10 @@ def number_check(input_string: str) -> int:
 def prime_factors(n: int) -> list:
     """
     Функция на вход принимает число и выдает список простых множителей
+
     Args:
     n  - целое число
+
     Return:
     list - список простых множителей введенного числа
     """
@@ -33,5 +37,5 @@ def prime_factors(n: int) -> list:
         primfact.append(n)
     return primfact
 
-n = number_check('Введите натуральное число: ')
-print(f'Список простых множителей числа {n}: {prime_factors(n)}')
+number = number_check('Введите натуральное число: ')
+print(f'Список простых множителей числа {number}: {prime_factors(number)}')
