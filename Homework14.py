@@ -3,11 +3,11 @@
 def fibo_num(n):
     fibo_num =[]
     fib1, fib2 = 1, 1
-    for i in range(n):
+    for _ in range(n):
         fibo_num.append(fib1)
         fib1, fib2 = fib2, fib1 + fib2
     fib1, fib2 = 0, 1
-    for i in range(n + 1):
+    for _ in range(n + 1):
         fibo_num.insert(0, fib1)
         fib1, fib2 = fib2, fib1 - fib2
     return fibo_num
