@@ -20,6 +20,5 @@ def prime_factors(n):
         primfact.append(n)
     return primfact
 
-# number = int(input('Введите натуральное число: '))
 number = number_check('Введите натуральное число: ')
 print(f'Список простых множителей числа {number} ---> {prime_factors(number)}')
