@@ -4,4 +4,4 @@ url_list = ['https://pythonru.com/osnovy/fajly-v-python-vvod-vyvod',
             'https://yandex.ru/search'            
             ]
 domen_list = list(map(lambda i: i[:i.find('/')], [i for i in map(lambda i: i.replace('https://',''), url_list)]))
-print(domen_list)
+print(f'Список доменных имен:\n{domen_list}')
