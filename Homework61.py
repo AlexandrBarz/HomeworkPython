@@ -11,6 +11,6 @@ def find_second_occurence(string_list, find_word):
     except IndexError:
         return print('Вхождение строки в список либо отсутствует полностью, либо отсутствует второе вхождение')
 
-original_list_string = (input('Введите строку: ')).split()
+original_string = (input('Введите строку: ')).split()
 find_word = input('Введите строку: ')
-print(find_second_occurence(original_list_string, find_word))
+print(find_second_occurence(original_string, find_word))
