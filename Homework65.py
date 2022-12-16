@@ -3,6 +3,6 @@
 
 import random
 
-numbers = [random.randint(1, 100) for _ in range(20)]
+numbers = [random.randint(1, 100) for _ in range(200)]
 print(f'Исходный список -> {numbers}')
 print(f'список без совпадений -> {list(filter(lambda x: x[0] != x[1], enumerate(numbers)))}')
