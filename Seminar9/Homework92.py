@@ -5,7 +5,20 @@ from telegram import Update
 from config import TOKEN
 import math
 
+def hello(update: Update, context: CallbackContext):
+    update.message.reply_text(f'Hello, {update.effective_user.first_name}')
+
+def help_commmand(update: Update, context: CallbackContext):
+     msg = update.message.text
+     update.message.reply_text(f'/Hello\n/help\n/sum - сложение 2-х чисел\n/diff - разность 2-х чисел\n/mult - произведение 2-х чисел\n/div - деление первого числа на второе\n/pow - возведение в степень(целочисленную)\n/sqrt - извлечение квадратного корня\nКоманду и числа нужно вводить через пробел')
+
+def log(update: Update, context: CallbackContext):
+    file = open('db.csv', 'a')
+    file.write(f'{update.effective_user.first_name},{update.message.text}')
+    file.close()
+
 def sum_number(update: Update, context: CallbackContext):     
+    log(update, context)
     msg = update.message.text
     if ',' in msg:
         update.message.reply_text('Некорректный ввод разделителя')
@@ -20,7 +33,8 @@ def sum_number(update: Update, context: CallbackContext):
         else:
             update.message.reply_text(f'Некорректный ввод. Одна из переменных не число. Вы ввели переменную --> {items[2]}')
 
-def diff_number(update: Update, context: CallbackContext):     
+def diff_number(update: Update, context: CallbackContext):
+    log(update, context)     
     msg = update.message.text
     if ',' in msg:
         update.message.reply_text('Некорректный ввод разделителя')
@@ -35,7 +49,8 @@ def diff_number(update: Update, context: CallbackContext):
         else:
             update.message.reply_text(f'Некорректный ввод. Одна из переменных не число. Вы ввели переменную --> {items[2]}')
 
-def mult_number(update: Update, context: CallbackContext):     
+def mult_number(update: Update, context: CallbackContext):
+    log(update, context)     
     msg = update.message.text
     if ',' in msg:
         update.message.reply_text('Некорректный ввод разделителя')
@@ -50,7 +65,8 @@ def mult_number(update: Update, context: CallbackContext):
         else:
             update.message.reply_text(f'Некорректный ввод. Одна из переменных не число. Вы ввели переменную --> {items[2]}')
 
-def div_number(update: Update, context: CallbackContext):     
+def div_number(update: Update, context: CallbackContext):
+    log(update, context)     
     msg = update.message.text
     if ',' in msg:
         update.message.reply_text('Некорректный ввод разделителя')
@@ -70,26 +86,28 @@ def div_number(update: Update, context: CallbackContext):
         else:
             update.message.reply_text(f'Некорректный ввод. Одна из переменных не число. Вы ввели переменную {items[2]}')
 
-def pow_number(update: Update, context: CallbackContext):     
+def pow_number(update: Update, context: CallbackContext):
+    log(update, context)     
     msg = update.message.text
     if ',' in msg:
         update.message.reply_text('Некорректный ввод разделителя')
     else:
         items = msg.split()
-        if not items[1].isalpha() and not items[2].isalpha():# and not items[2].is_integer():
+        if not items[1].isalpha() and not items[2].isalpha():
             x = float(items[1])
             y = float(items[2])
-            if y % 10 == 0:
+            y_int = int(y)
+            if y - y_int == 0:
                 update.message.reply_text(f'{x} ^ {y} = {x ** y}')
             else:
                 update.message.reply_text(f'Значение степени дробное число. Данной программой возведение в дробную степень не предусмотрено')
-                
         elif items[1].isalpha():
             update.message.reply_text(f'Некорректный ввод. Одна из переменных не число. Вы ввели переменную --> {items[1]}')
         else:
             update.message.reply_text(f'Некорректный ввод. Одна из переменных не число. Вы ввели переменную --> {items[2]}')
 
-def sqrt_number(update: Update, context: CallbackContext):     
+def sqrt_number(update: Update, context: CallbackContext):
+    log(update, context)     
     msg = update.message.text
     if ',' in msg:
         update.message.reply_text('Некорректный ввод разделителя')
@@ -111,6 +129,7 @@ updater.dispatcher.add_handler(CommandHandler('mult', mult_number))
 updater.dispatcher.add_handler(CommandHandler('div', div_number))
 updater.dispatcher.add_handler(CommandHandler('pow', pow_number))
 updater.dispatcher.add_handler(CommandHandler('sqrt', sqrt_number))
+updater.dispatcher.add_handler(CommandHandler('help', help_commmand))
 
 print('сервер запущен')                                      
 updater.start_polling()                                 
