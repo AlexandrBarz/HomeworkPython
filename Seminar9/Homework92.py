@@ -9,7 +9,9 @@ def hello(update: Update, context: CallbackContext):
     update.message.reply_text(f'Hello {update.effective_user.first_name}')
 
 def help_commmand(update: Update, context: CallbackContext):
-    update.message.reply_text(f'/hello\n/help\n\nЧто я умею:\n/sum - складывать 2 числа\n/diff - считать разность 2-х чисел\n/mult - умножать 2 числа\n/div - делить первое число на второе\n/pow - возводить в целочисленную степень\n/sqrt - извлекать квадратный корень\nКоманду и числа нужно вводить через пробел')
+    update.message.reply_text(f'/hello\n/help\n\nЧто я умею:\n/sum - складывать 2 числа\n\
+        /diff - считать разность 2-х чисел\n/mult - умножать 2 числа\n/div - делить первое число на второе\n\
+        /pow - возводить в целочисленную степень\n/sqrt - извлекать квадратный корень\nКоманду и числа нужно вводить через пробел')
 
 def log(update: Update, context: CallbackContext):
     file = open('db.csv', 'a')
