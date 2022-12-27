@@ -6,15 +6,14 @@ from config import TOKEN
 import math
 
 def hello(update: Update, context: CallbackContext):
-    update.message.reply_text(f'Hello, {update.effective_user.first_name}')
+    update.message.reply_text(f'Hello {update.effective_user.first_name}')
 
 def help_commmand(update: Update, context: CallbackContext):
-     msg = update.message.text
-     update.message.reply_text(f'/Hello\n/help\n/sum - сложение 2-х чисел\n/diff - разность 2-х чисел\n/mult - произведение 2-х чисел\n/div - деление первого числа на второе\n/pow - возведение в степень(целочисленную)\n/sqrt - извлечение квадратного корня\nКоманду и числа нужно вводить через пробел')
+    update.message.reply_text(f'/hello\n/help\n\nЧто я умею:\n/sum - складывать 2 числа\n/diff - считать разность 2-х чисел\n/mult - умножать 2 числа\n/div - делить первое число на второе\n/pow - возводить в целочисленную степень\n/sqrt - извлекать квадратный корень\nКоманду и числа нужно вводить через пробел')
 
 def log(update: Update, context: CallbackContext):
     file = open('db.csv', 'a')
-    file.write(f'{update.effective_user.first_name},{update.message.text}')
+    file.write(f'{update.effective_user.first_name},{update.message.text}\n')
     file.close()
 
 def sum_number(update: Update, context: CallbackContext):     
@@ -122,14 +121,15 @@ def sqrt_number(update: Update, context: CallbackContext):
             update.message.reply_text(f'Некорректный ввод. Вы ввели переменную --> {items[1]}')
 
 
-updater = Updater(TOKEN) 
+updater = Updater(TOKEN)
+updater.dispatcher.add_handler(CommandHandler('hello', hello))
+updater.dispatcher.add_handler(CommandHandler('help', help_commmand))
 updater.dispatcher.add_handler(CommandHandler('sum', sum_number))
 updater.dispatcher.add_handler(CommandHandler('dff', diff_number))
 updater.dispatcher.add_handler(CommandHandler('mult', mult_number))
 updater.dispatcher.add_handler(CommandHandler('div', div_number))
 updater.dispatcher.add_handler(CommandHandler('pow', pow_number))
 updater.dispatcher.add_handler(CommandHandler('sqrt', sqrt_number))
-updater.dispatcher.add_handler(CommandHandler('help', help_commmand))
 
 print('сервер запущен')                                      
 updater.start_polling()                                 
