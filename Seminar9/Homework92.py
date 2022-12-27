@@ -15,7 +15,7 @@ def help_commmand(update: Update, context: CallbackContext):
 
 def log(update: Update, context: CallbackContext):
     file = open('db.csv', 'a')
-    file.write(f'{update.effective_user.first_name},{update.message.text}\n')
+    file.write(f'{update.effective_user.first_name}, {update.message.text}\n')
     file.close()
 
 def sum_number(update: Update, context: CallbackContext):     
